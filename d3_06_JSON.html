@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="canvas">
+        
+    </div>
+    <script>
+
+        
+// d3.json('https://jsonplaceholder.typicode.com/todos/1')
+d3.json('datos.json')
+.then(data => 
+{console.log(data)
+console.log(data[0].valor);
+
+rect.data(data)
+
+    .enter().append("rect") 
+    .attr("width",(d, i) =>  d.valor * 2)
+    .attr("height", 50)
+    .attr("x", (d, i) => 0  /*80 -(d*2)*/ )
+    .attr("y", (d, i) =>  i * 55 )
+    .attr("opacity",'90%')
+    .attr("fill", (d, i) =>{
+    return d.color
+})
+
+});
+
+// const arrayData = [
+//  {valor: 8, color: 'darken'},
+//  {valor: 15, color: 'purple'},
+//  {valor: 34, color: 'blue'},
+//  {valor: 22, color: 'darkblue'},
+//  {valor: 43, color: 'orange'}
+// ]   
+     
+
+const canvas = d3.select(".canvas")
+const svg = canvas.append("svg")  
+.attr("width", "80%")
+.attr("height", 300)
+
+const rect = svg.selectAll("rect")
+
+
+
+
+    </script>
+    
+</body>
+</html>
